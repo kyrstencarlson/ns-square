@@ -17,13 +17,11 @@ export interface CardEntryDelegate {
 export function createCardEntryDelegate(delegate: CardEntryDelegate): NSObject {
   const Impl = (NSObject as any).extend(
     {
-      // ✅ REQUIRED — and correct name
       cardEntryViewControllerDidCancel(controller: any): void {
         console.log('🟡 Delegate cancel method called');
         delegate?.onCardEntryCancel?.();
       },
 
-      // ✅ Simple 2-part selector
       cardEntryViewControllerDidCompleteWithStatus(controller: any, status: number): void {
         console.log('CardEntryViewControllerDidCompleteWithStatus');
         delegate?.onCardEntryDidComplete?.(status);
@@ -36,7 +34,7 @@ export function createCardEntryDelegate(delegate: CardEntryDelegate): NSObject {
         }
       },
 
-      // ✅ Multi-part selector requires full quoted key
+      // Multi-part selector requires full quoted key ??
       'cardEntryViewController:didObtainCardDetails:completionHandler:': function (controller: any, cardDetails: any, completionHandler: (error: NSError | null) => void): void {
         console.log('cardEntryViewController:didObtainCardDetails:completionHandler:');
 
@@ -47,7 +45,6 @@ export function createCardEntryDelegate(delegate: CardEntryDelegate): NSObject {
       __metadata: () => ({
         protocols: ['SQIPCardEntryViewControllerDelegate'],
         methods: {
-          // 👇 MUST match the JS function name above exactly
           cardEntryViewControllerDidCancel: {
             returns: interop.types.void,
             params: [interop.types.id],

@@ -13,7 +13,7 @@
       "after-prepare": "hooks/after-prepare.js"
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "xcode": "^3.0.1"
   },
   "repository": {
