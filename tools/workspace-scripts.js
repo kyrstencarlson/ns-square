@@ -55,12 +55,19 @@ module.exports = {
       },
     },
     '⚙️': {
-      script: `npx cowsay "@nativescript/* packages will keep your ⚙️ cranking"`,
-      description: '_____________  @nativescript/*  _____________',
+      script: `npx cowsay "@launchpoint/* packages will keep your ⚙️ cranking"`,
+      description: '_____________  @launchpoint/*  _____________',
     },
     // packages
     // build output is always in dist/packages
-    '@nativescript': {
+    '@launchpoint': {
+      // @launchpoint/square-sdk
+      'square-sdk': {
+        build: {
+          script: 'nx run square-sdk:build.all',
+          description: '@launchpoint/square-sdk: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -71,6 +78,10 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
+      'square-sdk': {
+        script: 'nx run square-sdk:focus',
+        description: 'Focus on @launchpoint/square-sdk',
+      },
       reset: {
         script: 'nx g @nativescript/plugin-tools:focus-packages',
         description: 'Reset Focus',

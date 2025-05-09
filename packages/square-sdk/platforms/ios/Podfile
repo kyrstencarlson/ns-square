@@ -1,0 +1,2 @@
+pod 'SquareBuyerVerificationSDK', '~> 1.6.4'
+pod 'SquareInAppPaymentsSDK', '~> 1.6.4'

@@ -2,10 +2,26 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "paths": {
-      "~/*": ["src/*"],
-      "@demo/shared": ["tools/demo/index.ts"]
+      "~/*": [
+        "src/*"
+      ],
+      "@demo/shared": [
+        "tools/demo/index.ts"
+      ],
+      "@launchpoint/*": [
+        "../../dist/packages/*"
+      ],
+      "@launchpoint/square-sdk": [
+        "../../packages/square-sdk/index.d.ts"
+      ]
     }
   },
-  "files": ["./references.d.ts", "./src/main.ts", "./src/polyfills.ts"],
-  "include": ["../../packages/**/references.d.ts"]
+  "files": [
+    "./references.d.ts",
+    "./src/main.ts",
+    "./src/polyfills.ts"
+  ],
+  "include": [
+    "../../packages/**/references.d.ts"
+  ]
 }

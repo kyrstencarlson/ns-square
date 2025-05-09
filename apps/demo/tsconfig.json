@@ -1,11 +1,24 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDirs": [".", "../.."],
+    "rootDirs": [
+      ".",
+      "../.."
+    ],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@demo/shared": ["../../tools/demo/index.ts"]
+      "~/*": [
+        "src/*"
+      ],
+      "@demo/shared": [
+        "../../tools/demo/index.ts"
+      ],
+      "@launchpoint/*": [
+        "../../packages/*"
+      ],
+      "@launchpoint/square-sdk": [
+        "../../packages/square-sdk/index.d.ts"
+      ]
     }
   }
 }

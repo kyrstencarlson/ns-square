@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "husky && npx ts-patch install",
-    "setup": "npx rimraf node_modules package-lock.json dist tmp yarn.lock && yarn",
+    "setup": "npx rimraf node_modules package-lock.json dist tmp package-lock.json && npm i",
     "start": "nps",
     "add": "nx g @nativescript/plugin-tools:add-package",
     "add-angular": "nx g @nativescript/plugin-tools:add-angular",

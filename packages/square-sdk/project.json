@@ -1,0 +1,73 @@
+{
+  "name": "square-sdk",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/square-sdk",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/square-sdk",
+        "tsConfig": "packages/square-sdk/tsconfig.json",
+        "packageJson": "packages/square-sdk/package.json",
+        "main": "packages/square-sdk/index.d.ts",
+        "assets": [
+          "packages/square-sdk/*.md",
+          "packages/square-sdk/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/square-sdk/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node tools/scripts/build-finish.ts square-sdk"
+        ],
+        "parallel": false
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/packages/square-sdk"
+      ],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx g @nativescript/plugin-tools:focus-packages square-sdk"
+        ],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/square-sdk/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
