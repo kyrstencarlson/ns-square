@@ -1,6 +1,5 @@
-import { CardEntryDelegate, SquareCardDetails } from '.';
 import { SquareInAppPaymentsCommon } from './common';
-import { PKPayment, SquareCardEntryThemeConfig } from './typings/objc!LinkKit';
+import { CardEntryDelegate, CardEntryOptions, PKPayment, SquareCardDetails, SquareCardEntryThemeConfig } from './typings/nativescript';
 
 declare var SQIPTheme, SQIPInAppPaymentsSDK, SQIPCardEntryViewController, SQIPApplePayNonceRequest, PKPaymentRequest, SQIPCardEntryViewControllerDelegate;
 
@@ -18,11 +17,11 @@ export class SQIPCardEntryViewControllerDelegateImpl extends NSObject {
     return instance;
   }
 
-  cardEntryViewControllerDidCompleteWithStatus(controller: any, status: number): void {
+  cardEntryViewControllerDidCompleteWithStatus(controller: UIViewController, status: number): void {
     this._delegate?.onCardEntryDidComplete?.(status);
   }
 
-  cardEntryViewControllerDidObtainCardDetailsCompletionHandler(controller: any, cardDetails: SquareCardDetails, completionHandler: (error: NSError | null) => void): void {
+  cardEntryViewControllerDidObtainCardDetailsCompletionHandler(controller: UIViewController, cardDetails: SquareCardDetails, completionHandler: (error: NSError | null) => void): void {
     this._delegate?.onCardNonceRequestSuccess?.(cardDetails);
     completionHandler?.(null);
   }
@@ -33,14 +32,7 @@ export class SquareInAppPayments extends SquareInAppPaymentsCommon {
     return SQIPInAppPaymentsSDK.canUseApplePay;
   }
 
-  public override startCardEntry(
-    delegate: CardEntryDelegate,
-    options?: {
-      collectPostalCode?: boolean;
-      isGiftCard?: boolean;
-      themeConfig?: Partial<SquareCardEntryThemeConfig>;
-    },
-  ): void {
+  public override startCardEntry(delegate: CardEntryDelegate, options?: CardEntryOptions): void {
     const theme = this.createTheme(options?.themeConfig);
     const controller = SQIPCardEntryViewController.alloc().initWithThemeIsGiftCard(theme, options?.isGiftCard ?? false);
 
@@ -77,7 +69,9 @@ export class SquareInAppPayments extends SquareInAppPaymentsCommon {
 
   override createTheme(config?: Partial<SquareCardEntryThemeConfig>): typeof SQIPTheme {
     const theme = SQIPTheme.alloc().init();
-    if (!config) return theme;
+    if (!config || (config && !Object.keys(config)?.length)) {
+      return theme;
+    }
 
     if (config.font) theme.font = config.font;
     if (config.backgroundColor) theme.backgroundColor = config.backgroundColor;
@@ -107,7 +101,7 @@ export class SquareInAppPayments extends SquareInAppPaymentsCommon {
     });
   }
 
-  private getRootViewController(): UIViewController | undefined {
+  override getRootViewController(): UIViewController | undefined {
     const keyWindow = UIApplication.sharedApplication.keyWindow;
     return keyWindow != null ? keyWindow.rootViewController : undefined;
   }
