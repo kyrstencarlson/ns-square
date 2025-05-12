@@ -23,7 +23,7 @@ module.exports = function ($logger, $projectData, hookArgs) {
 
             if (platform.toLowerCase() !== 'ios') {
                 $logger.info('ℹ️ Not iOS — skipping build phase injection.');
-                return;
+                return resolve()
             }
 
             const iosDir = path.join($projectData.platformsDir, 'ios');
@@ -31,7 +31,7 @@ module.exports = function ($logger, $projectData, hookArgs) {
 
             if (!fs.existsSync(pbxprojPath)) {
                 $logger.warn('⚠️ Xcode project not found at ' + pbxprojPath);
-                return;
+                return resolve()
             }
 
             const project = xcode.project(pbxprojPath);
@@ -49,7 +49,7 @@ module.exports = function ($logger, $projectData, hookArgs) {
 
             if (alreadyExists) {
                 $logger.info('ℹ️ Script already exists in build phases. Skipping.');
-                return;
+                return resolve()
             }
 
 

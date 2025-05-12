@@ -1,5 +1,5 @@
 {
-  "name": "@launchpoint/square-sdk",
+  "name": "@launchpoint/payments-nativescript-square-sdk",
   "version": "1.0.0",
   "description": "{N} Plugin for the Square In App Payments SDK",
   "main": "index",
