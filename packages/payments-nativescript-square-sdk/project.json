@@ -19,6 +19,11 @@
             "glob": "**/*",
             "input": "packages/payments-nativescript-square-sdk/platforms/",
             "output": "./platforms/"
+          },
+          {
+            "glob": "**/*",
+            "input": "packages/payments-nativescript-square-sdk/hooks/",
+            "output": "./hooks/"
           }
         ],
         "dependsOn": [

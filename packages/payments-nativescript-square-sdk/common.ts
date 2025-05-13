@@ -1,7 +1,5 @@
 import { Observable } from '@nativescript/core';
-import { CardEntryDelegate, CardEntryOptions, SquareCardEntryThemeConfig } from './typings/nativescript';
-
-declare var SQIPInAppPaymentsSDK;
+import { CardEntryDelegate, CardEntryOptions } from './typings/nativescript';
 
 export class SquareInAppPaymentsCommon extends Observable {
   /**
@@ -34,7 +32,7 @@ export class SquareInAppPaymentsCommon extends Observable {
     console.error('dismiss method not implemented for this platform');
   }
 
-  protected createTheme(config?: Partial<SquareCardEntryThemeConfig>) {
+  protected createTheme(config?: Partial<SQIPTheme>) {
     console.error('createTheme method not implemented for this platform');
     return;
   }

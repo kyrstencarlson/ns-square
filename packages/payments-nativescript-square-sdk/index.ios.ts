@@ -1,10 +1,8 @@
 import { SquareInAppPaymentsCommon } from './common';
-import { CardEntryDelegate, CardEntryOptions, PKPayment, SquareCardDetails, SquareCardEntryThemeConfig } from './typings/nativescript';
-
-declare var SQIPTheme, SQIPInAppPaymentsSDK, SQIPCardEntryViewController, SQIPApplePayNonceRequest, PKPaymentRequest, SQIPCardEntryViewControllerDelegate;
+import { CardEntryDelegate, CardEntryOptions } from './typings/nativescript';
 
 @NativeClass()
-export class SQIPCardEntryViewControllerDelegateImpl extends NSObject {
+export class SQIPCardEntryViewControllerDelegateImpl extends NSObject implements SQIPCardEntryViewControllerDelegate {
   public static ObjCProtocols = [SQIPCardEntryViewControllerDelegate];
 
   private _delegate: CardEntryDelegate;
@@ -17,11 +15,11 @@ export class SQIPCardEntryViewControllerDelegateImpl extends NSObject {
     return instance;
   }
 
-  cardEntryViewControllerDidCompleteWithStatus(controller: UIViewController, status: number): void {
+  cardEntryViewControllerDidCompleteWithStatus(cardEntryViewController: SQIPCardEntryViewController, status: SQIPCardEntryCompletionStatus): void {
     this._delegate?.onCardEntryDidComplete?.(status);
   }
 
-  cardEntryViewControllerDidObtainCardDetailsCompletionHandler(controller: UIViewController, cardDetails: SquareCardDetails, completionHandler: (error: NSError | null) => void): void {
+  cardEntryViewControllerDidObtainCardDetailsCompletionHandler(cardEntryViewController: SQIPCardEntryViewController, cardDetails: SQIPCardDetails, completionHandler: (p1: NSError) => void): void {
     this._delegate?.onCardNonceRequestSuccess?.(cardDetails);
     completionHandler?.(null);
   }
@@ -67,7 +65,7 @@ export class SquareInAppPayments extends SquareInAppPaymentsCommon {
     }
   }
 
-  override createTheme(config?: Partial<SquareCardEntryThemeConfig>): typeof SQIPTheme {
+  override createTheme(config?: Partial<SQIPTheme>): SQIPTheme {
     const theme = SQIPTheme.alloc().init();
     if (!config || (config && !Object.keys(config)?.length)) {
       return theme;
@@ -90,13 +88,13 @@ export class SquareInAppPayments extends SquareInAppPaymentsCommon {
     return theme;
   }
 
-  public createApplePayRequest(merchantId: string, countryCode: string, currencyCode: string): typeof PKPaymentRequest {
+  public createApplePayRequest(merchantId: string, countryCode: string, currencyCode: string): PKPaymentRequest {
     return PKPaymentRequest.squarePaymentRequestWithMerchantIdentifierCountryCodeCurrencyCode(merchantId, countryCode, currencyCode);
   }
 
-  public performApplePayNonceRequest(payment: PKPayment, callback: (cardDetails?: SquareCardDetails, error?: NSError | null) => void): void {
+  public performApplePayNonceRequest(payment: PKPayment, callback: (cardDetails?: SQIPCardDetails, error?: NSError | null) => void): void {
     const request = SQIPApplePayNonceRequest.alloc().initWithPayment(payment);
-    request.performWithCompletionHandler((cardDetails: SquareCardDetails, error: NSError | null) => {
+    request.performWithCompletionHandler((cardDetails: SQIPCardDetails, error: NSError | null) => {
       callback(cardDetails, error);
     });
   }
