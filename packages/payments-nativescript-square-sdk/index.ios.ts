@@ -26,6 +26,13 @@ export class SQIPCardEntryViewControllerDelegateImpl extends NSObject implements
 }
 
 export class SquareInAppPayments extends SquareInAppPaymentsCommon {
+  public override get squareApplicationID(): string | null {
+    return SQIPInAppPaymentsSDK.squareApplicationID;
+  }
+
+  public override set squareApplicationID(appId: string) {
+    SQIPInAppPaymentsSDK.squareApplicationID = appId;
+  }
   public get canUseApplePay(): boolean {
     return SQIPInAppPaymentsSDK.canUseApplePay;
   }

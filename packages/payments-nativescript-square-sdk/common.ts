@@ -7,22 +7,14 @@ export class SquareInAppPaymentsCommon extends Observable {
    * This is required to use the Square In-App Payments SDK.
    *
    * Set this value before calling any other methods in the SDK.
-   *
-   * @default null
    */
   public get squareApplicationID(): string | null {
-    return SQIPInAppPaymentsSDK.squareApplicationID;
+    console.error('squareApplicationID getter not implemented for this platform');
+    return null;
   }
 
   public set squareApplicationID(appId: string) {
-    SQIPInAppPaymentsSDK.squareApplicationID = appId;
-  }
-
-  /**
-   * iOS Only
-   */
-  public get canUseApplePay(): boolean {
-    return SQIPInAppPaymentsSDK.canUseApplePay;
+    console.error('squareApplicationID setter not implemented for this platform');
   }
 
   public startCardEntry(delegate: CardEntryDelegate, options?: CardEntryOptions) {
