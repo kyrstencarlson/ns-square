@@ -6,8 +6,11 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   demos = [
-    {
-      name: 'square-sdk',
-    },
-  ];
+	{
+		name: 'payments-nativescript-square-sdk'
+	},
+	{
+		name: 'square-in-app-payments'
+	}
+];
 }

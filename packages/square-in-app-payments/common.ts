@@ -20,10 +20,21 @@ export class SquareInAppPaymentsCommon extends Observable {
   public startCardEntry(delegate: CardEntryDelegate, options?: CardEntryOptions) {
     console.error('startCardEntry method not implemented for this platform');
   }
+
   public dismiss() {
     console.error('dismiss method not implemented for this platform');
   }
 
+  /**
+   * Android only
+   */
+  public startGiftCardEntry() {
+    console.error('startGiftCardEntry method not implemented for this platform');
+  }
+
+  /**
+   * iOS only
+   */
   protected createTheme(config?: Partial<SQIPTheme>) {
     console.error('createTheme method not implemented for this platform');
     return;

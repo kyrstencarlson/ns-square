@@ -1,20 +1,14 @@
 {
-  "name": "@launchpoint/payments-nativescript-square-sdk",
+  "name": "@launchpoint/square-in-app-payments",
   "version": "1.0.0",
-  "description": "{N} Plugin for the Square In App Payments SDK",
+  "description": "Add a plugin description",
   "main": "index",
   "types": "index.d.ts",
   "nativescript": {
     "platforms": {
       "ios": "6.0.0",
       "android": "6.0.0"
-    },
-    "hooks": {
-      "after-prepare": "hooks/after-prepare.js"
     }
-  },
-  "dependencies": {
-    "xcode": "^3.0.1"
   },
   "repository": {
     "type": "git",
@@ -25,8 +19,7 @@
     "JavaScript",
     "TypeScript",
     "iOS",
-    "Android",
-    "Square"
+    "Android"
   ],
   "author": {
     "name": "Kyrsten Carlson",
@@ -37,5 +30,6 @@
   },
   "license": "Apache-2.0",
   "homepage": "https://github.com/kyrstencarlson/ns-square",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "bootstrapper": "@nativescript/plugin-seed"
 }

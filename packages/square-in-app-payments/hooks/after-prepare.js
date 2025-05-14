@@ -4,7 +4,7 @@ const xcode = require('xcode');
 
 module.exports = function ($logger, $projectData, hookArgs) {
 
-    // $logger.info("[After Prepare] Adding Build Phase for Square SDK");
+    $logger.info("[After Prepare] Adding Build Phase for Square SDK");
 
     return new Promise((resolve, reject) => {
 

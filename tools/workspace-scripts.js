@@ -68,7 +68,14 @@ module.exports = {
           description: '@launchpoint/square-sdk: Build',
         },
       },
-      'build-all': {
+      // @launchpoint/square-in-app-payments
+			'square-in-app-payments': {
+				build: {
+					script: 'nx run square-in-app-payments:build.all',
+					description: '@launchpoint/square-in-app-payments: Build',
+				},
+			},
+			'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
       },
@@ -82,7 +89,11 @@ module.exports = {
         script: 'nx run square-sdk:focus',
         description: 'Focus on @launchpoint/square-sdk',
       },
-      reset: {
+      'square-in-app-payments': {
+				script: 'nx run square-in-app-payments:focus',
+				description: 'Focus on @launchpoint/square-in-app-payments',
+			},
+			reset: {
         script: 'nx g @nativescript/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },

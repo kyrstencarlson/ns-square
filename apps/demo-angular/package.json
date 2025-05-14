@@ -2,7 +2,7 @@
   "main": "./src/main.ts",
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@launchpoint/square-sdk": "file:../../dist/packages/square-sdk"
+    "@launchpoint/square-in-app-payments": "file:../../dist/packages/square-in-app-payments"
   },
   "devDependencies": {
     "@nativescript/android": "~8.8.0",

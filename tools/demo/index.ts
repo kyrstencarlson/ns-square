@@ -1,2 +1,3 @@
 export * from './utils';
-export * from './square-sdk';
+export * from './payments-nativescript-square-sdk';
+export * from './square-in-app-payments';

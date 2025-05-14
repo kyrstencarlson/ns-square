@@ -5,7 +5,7 @@
   "repository": "<fill-your-repository-here>",
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@launchpoint/payments-nativescript-square-sdk": "file:../../packages/payments-nativescript-square-sdk"
+    "@launchpoint/square-in-app-payments": "file:../../packages/square-in-app-payments"
   },
   "devDependencies": {
     "@nativescript/android": "~8.8.0",

@@ -11,8 +11,8 @@
       "@launchpoint/*": [
         "../../dist/packages/*"
       ],
-      "@launchpoint/square-sdk": [
-        "../../packages/square-sdk/index.d.ts"
+      "@launchpoint/square-in-app-payments": [
+        "../../packages/square-in-app-payments/index.d.ts"
       ]
     }
   },
@@ -22,6 +22,7 @@
     "./src/polyfills.ts"
   ],
   "include": [
-    "../../packages/**/references.d.ts"
+    "../../packages/**/references.d.ts",
+    "application.android.ts",
   ]
 }

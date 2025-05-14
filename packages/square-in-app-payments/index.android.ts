@@ -132,4 +132,15 @@ export class SquareInAppPayments extends SquareInAppPaymentsCommon {
 
     sqip.CardEntry.startCardEntryActivity(activity, options?.collectPostalCode ?? true, CheckoutActivity.DEFAULT_CARD_ENTRY_REQUEST_CODE);
   }
+
+  startGiftCardEntry() {
+    const activity = Application.android.foregroundActivity || Application.android.startActivity;
+
+    if (!activity) {
+      console.error('No active Android activity found');
+      return;
+    }
+
+    sqip.CardEntry.startGiftCardEntryActivity(activity);
+  }
 }

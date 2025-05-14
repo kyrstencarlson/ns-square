@@ -1,11 +1,5 @@
-# @launchpoint/\* plugins
-
-```
-npm run setup
-npm start
-```
-
-- [@launchpoint/square-sdk](packages/square-sdk/README.md)
+- [@launchpoint/payments-nativescript-square-sdk](packages/payments-nativescript-square-sdk/README.md)
+- [@launchpoint/square-in-app-payments](packages/square-in-app-payments/README.md)
 
 # How to use?
 

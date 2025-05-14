@@ -1,28 +1,28 @@
 {
-  "name": "payments-nativescript-square-sdk",
+  "name": "square-in-app-payments",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/payments-nativescript-square-sdk",
+  "sourceRoot": "packages/square-in-app-payments",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "options": {
-        "outputPath": "dist/packages/payments-nativescript-square-sdk",
-        "tsConfig": "packages/payments-nativescript-square-sdk/tsconfig.json",
-        "packageJson": "packages/payments-nativescript-square-sdk/package.json",
-        "main": "packages/payments-nativescript-square-sdk/index.d.ts",
+        "outputPath": "dist/packages/square-in-app-payments",
+        "tsConfig": "packages/square-in-app-payments/tsconfig.json",
+        "packageJson": "packages/square-in-app-payments/package.json",
+        "main": "packages/square-in-app-payments/index.d.ts",
         "assets": [
-          "packages/payments-nativescript-square-sdk/*.md",
-          "packages/payments-nativescript-square-sdk/index.d.ts",
+          "packages/square-in-app-payments/*.md",
+          "packages/square-in-app-payments/index.d.ts",
           "LICENSE",
           {
             "glob": "**/*",
-            "input": "packages/payments-nativescript-square-sdk/platforms/",
+            "input": "packages/square-in-app-payments/platforms/",
             "output": "./platforms/"
           },
           {
             "glob": "**/*",
-            "input": "packages/payments-nativescript-square-sdk/hooks/",
+            "input": "packages/square-in-app-payments/hooks/",
             "output": "./hooks/"
           }
         ],
@@ -38,12 +38,12 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "node tools/scripts/build-finish.ts payments-nativescript-square-sdk"
+          "node tools/scripts/build-finish.ts square-in-app-payments"
         ],
         "parallel": false
       },
       "outputs": [
-        "{workspaceRoot}/dist/packages/payments-nativescript-square-sdk"
+        "{workspaceRoot}/dist/packages/square-in-app-payments"
       ],
       "dependsOn": [
         {
@@ -60,7 +60,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "nx g @nativescript/plugin-tools:focus-packages payments-nativescript-square-sdk"
+          "nx g @nativescript/plugin-tools:focus-packages square-in-app-payments"
         ],
         "parallel": false
       }
@@ -69,7 +69,7 @@
       "executor": "@nx/eslint:eslint",
       "options": {
         "lintFilePatterns": [
-          "packages/payments-nativescript-square-sdk/**/*.ts"
+          "packages/square-in-app-payments/**/*.ts"
         ]
       }
     }
